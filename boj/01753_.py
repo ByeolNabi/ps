@@ -2,19 +2,12 @@
 import sys
 import heapq # 우선순위 큐
 
+INF = int(300000)
 input = sys.stdin.readline
-# 입력 받기
-n_num, e_num = map(int,input().split())
-start_node = int(input())
-# 관계성을 기록한 graph 만들기
-graph = {i:{} for i in range(1,n_num+1)}
-for i in range(e_num):
-    start, end, weight = map(int,input().split())
-    graph[start][end] = weight
-# start로부터의 거리 출력, 관계성은 기록하지 않음
+# start로부터의 거리 반환, 관계성은 기록하지 않음
 def dijkstra(graph, start):
     # 최단거리 저장을 위한 표
-    distance = {node: float('inf') for node in graph}
+    distance = {node: INF for node in graph}
     # 초기 설정 (start가 시작 지점일 때)
     distance[start] = 0;
     queue = []
@@ -39,13 +32,35 @@ def dijkstra(graph, start):
     
     return distance;
     
+# 입력 받기
+n_num, e_num = map(int, input().split())
+start_node = int(input())
+# 관계성을 기록한 graph 만들기
+graph = {i:{} for i in range(1,n_num+1)}
+for i in range(e_num):
+    start, end, weight = map(int,input().split())
+    graph[start][end] = weight
+    
 dist = dijkstra(graph, start_node);
 for w in dist:
-    if dist[w] == float('inf'):
+    if dist[w] == INF:
         print("INF")
     else:
         print(dist[w])
 
+"""
+5 9
+1
+1 2 6
+1 3 2
+1 4 10
+2 4 3
+2 5 4
+3 2 3
+3 5 4
+4 3 4
+5 4 1
+"""
 #### 메모리 초과 ####
 # 메모리 초과면 저장하는 방법을 변경해야 할 것 같은데...
 # 힙과 dictionary를 사용하자
