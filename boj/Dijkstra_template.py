@@ -95,4 +95,38 @@ for i in range(1,V+1):
     else:
         print(distance[i])
 
-## 다익스트라
+"""
+import sys
+import heapq
+
+V, E, START
+
+# 자료구조
+graph : 인덱스 마다 >> (연결 노드:비용)
+distances : 인덱스마다 최소비용 저장 << 최종 결과물이 저장 될 곳, inf로 초기화한다.
+q : 후보 노드 저장을 위한 최소힙 >> (w of start to node_name, node_name)
+
+
+##### 알고리즘 #####
+def dijk(START):
+    # 초기 설정
+    ## 일단 START를 힙에 넣는다, distances를 초기화한다.
+    heapq.heappush(q, (0, START))
+    distances[START]를 0으로
+    # 힙이 다 없어질 때 까지 >> 힙과 조건을 활용해서 visited를 이용하지 않아도 된다.
+    while q:
+        total_weight, crnt = 힙.pop
+        #crnt노드와 연결성이 존재하는 모든 노드를 일단 탐색한다.
+        for candidate in graph[crnt노드와 연결된 노드의 집합]:
+            w of start to candidate
+            if w < distance[candidate]:
+                distance[candidate] = cost
+                heapq.heappush(q, (cost, candidate))
+                
+                
+
+
+
+🔥참고사항 : 딕셔너리가 만능이 아니다. 노드의 이름과 index를 매칭할 수 있다면 그게 결국 dictionary형태이다 O(1).
+>> 간선 사이에 두 개 이상의 가중치가 있을 수 있으니 list에 append를 시키는 편이 안전하다.
+"""
