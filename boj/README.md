@@ -33,6 +33,6 @@ https://www.acmicpc.net/board/view/120063
 input = sys.stdin.readline
 '''
 🎯 입출력
-🔥 생각해볼 문제
+🔥 알고리즘
 📚 데이터 구조
 '''
