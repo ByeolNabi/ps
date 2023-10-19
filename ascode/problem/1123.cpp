@@ -35,9 +35,9 @@ int main() {
 			else if(isWinner(2) && stone1 == stone2+1) { // 2가 돌을 놓았지만 이긴 사람은 1인 경우
 				printf("NO\n");
 			}
-			else if(isWinner(1)&&isWinner(2)){ // 두 면이 동시에 이겼으면 망함
-				printf("NO\n");
-			}
+			// else if(isWinner(1)&&isWinner(2)){ // 두 면이 동시에 이겼으면 망함
+			// 	printf("NO\n");
+			// }
             else if((stone1 + stone2 == 9) && !(isWinner(1)||isWinner(2))){ // 이긴 사람 없고 and 보드가 꽉 찼어
                 printf("DRAW\n");
             }
