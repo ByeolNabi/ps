@@ -22,19 +22,19 @@ for N_loc in N_locs:
         q = [] # 힙큐
         distance = [float('inf')]*(V+1)
         # 초기값 넣기
-        # distance[N_loc] = 0
-        heapq.heappush(q, [0, N_loc])
+        distance[N_loc] = 0
+        heapq.heappush(q, [0, N_loc]) # 다음에 갈 후보지
         # 큐 순회 시작 
         while q:
             # 다음 후보지를 함 보자~
             crt_d, crt_n = heapq.heappop(q)
-            distance[nxt_n] = crt_d + nxt_d # 갱신해, 갱신했다면?
-            # 이 후보지로 가면 이득이야?
-            if crt_d<distance[crt_n]: # 후보지로 가는 방법이 저번에 갔던 방법보다 빠른 길이라면 가자
-                distance[crt_n] = crt_d # 빠른 길이라면 갱신해~
+            # 이 후보지로 가면 이득이야? // 값이 같거나 작으면 그 곳으로 가자, 값이 작을 때만 확정짓는다면 저번 for문에서 이미 갱신된 값이 있기 떄문에 절대로 최솟값을 확정짓지 않을 것이다.
+            if crt_d<=distance[crt_n]: # 후보지로 가는 방법이 저번에 갔던 방법보다 빠른 길이라면 가자
+                # distance[crt_n] = crt_d # 빠른 길이라면 갱신해~ // 갱신은 이미 되어있을 것이다.
                 # 현재 위치에서 갈 수 있는 모든 노드 후보군을 보고 길이가 더 짧은 방법이라면 큐에 넣자
                 for nxt_d, nxt_n in graph[crt_n]: # 다음 노드로 가기위한 가중치
                     if crt_d + nxt_d < distance[nxt_n]: # 갱신 가능하면
+                        distance[nxt_n] = crt_d + nxt_d # 갱신해, 갱신했다면?
                         heapq.heappush(q, [distance[nxt_n], nxt_n]) # 힙에 넣어
 
         return -1 if distance[kist] == float('inf') else distance[kist], \
@@ -66,19 +66,17 @@ print(total)
     graph[] << [가중치, 목적지]
     q[] << [현재까지의 가중치, 현재 위치]
     
-    
-
 🎲 test case
-
 
 ⛔️ 실패
     1. 머릿속으로 생각한 구현으로 실패
         pop은 그 곳에 갈지 말지를 결정하는 것이다. 따라서 pop을 하고 거리가 갱신되면 그 곳에서 본격적으로 다음 노드 후보군을 넣으려고 했다.
         그럴려면 다음 노드를 순회하는 과정에서 값을 갱신하지 않고 도착 했을 떄 값을 갱신해야 한다. 도착했을 떄 값을 갱신하려면 prev를 가지고 있어야 한다.
         뭔가 꼬인 듯 하다.
-    
-        
+        >> heappop을 했다는 뜻은 일단 그 위치의 노드는 최선의 선택이라는 의미이다. 
 
 📝 후기
+    - 다익스트라를 머리에서 끄집어 내는 중에 생각이 꼬여서 잘 못 작동되었다.
+    문제 자체는 변형이 거의 없는 쉬운 편이었다.
 
 '''

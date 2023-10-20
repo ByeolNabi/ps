@@ -16,7 +16,7 @@ def dijkstra(startNode, endPoint = 0):
         if crnt == endPoint:
             return
         else:
-            # 연결된 노드의 가중치가 작아지면 방문하는 것으로 하자
+            # 연결된 노드의 가중치가 작아지면 방문하는 것으로 하자 >> !!!!! 이미 방문했던 큐가 나와도 일단 연결된 노드를 다 탐색하게 된다. >> 시간 복잡도 손해
             for nxt,n_cost in graph[crnt]:
                 t_cost = c_cost+n_cost
                 if t_cost < distances[nxt]: # 가중치가 작아지면 dist를 갱신하고 방문 후보군에 넣어두자
@@ -53,13 +53,6 @@ while result:
         break;
 
 print(-weight)
-
-
-
-        
-
-
-
 
 
 '''
