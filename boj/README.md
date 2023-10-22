@@ -36,6 +36,8 @@ https://www.acmicpc.net/board/view/120063
 >다익스트라, 시작 조건이 여러개인
 1714. 카드 정렬하기 [골드4]
 >힙큐 라이브러리를 쓰면 쉽다.
+1436. 영화감독 숌 [실버5]
+>
 
 =============
 input = sys.stdin.readline
