@@ -59,4 +59,4 @@
 *.dSYM
 */build
 
-/ascode
+*/ascode
