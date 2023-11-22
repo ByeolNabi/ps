@@ -58,3 +58,5 @@
 
 *.dSYM
 */build
+
+/ascode
