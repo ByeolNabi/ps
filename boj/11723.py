@@ -17,9 +17,9 @@ for _ in range(tc):
         set_temp.discard(command[1])
     elif op == "check":
         if command[1] in set_temp:
-            result.append("1")
+            sys.stdout.write("1")
         else:
-            result.append("0")
+            sys.stdout.write("0")
     elif op == "toggle":
         if command[1] in set_temp:
             set_temp.discard(command[1])
@@ -31,6 +31,5 @@ for _ in range(tc):
     elif op == "empty":
         set_temp.clear()
 
-sys.stdout.write("\n".join(result))
 # print(result)
 # print()
