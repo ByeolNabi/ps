@@ -1,32 +1,36 @@
 # [실버5] 집합
 import sys
 
-result = set([])
-MAX = set([num for num in range(1, 21)])
+set_temp = set([])
+result = []
 
-datas = sys.stdin.read().splitlines()
-tc = int(datas[0])
+tc = int(sys.stdin.readline())
 
-# print(datas[1:])
-for val in datas[1:]:
-    command = val.split()
+for _ in range(tc):
+    command = input().split()
     op = command[0]
     # print(command)
 
     if op == "add":
-        result.add(int(command[1]))
+        set_temp.add(command[1])
     elif op == "remove":
-        result.discard(int(command[1]))
+        set_temp.discard(command[1])
     elif op == "check":
-        if result.issuperset(set([int(command[1])])) == True:
-            print(1)
+        if set_temp.issuperset(set([command[1]])) == True:
+            result.append("1")
         else:
-            print(0)
+            result.append("0")
     elif op == "toggle":
-        result = result.symmetric_difference(set([int(command[1])]))
+        if command[1] in set_temp:
+            set_temp.discard(command[1])
+        else:
+            set_temp.add(command[1])
+
     elif op == "all":
-        result = MAX
+        set_temp = set([str(num) for num in range(1, 21)])
     elif op == "empty":
-        result.clear()
-    # print(result)
-    # print()
+        set_temp.clear()
+
+sys.stdout.write("\n".join(result))
+# print(result)
+# print()
