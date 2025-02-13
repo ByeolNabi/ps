@@ -7,7 +7,7 @@ result = []
 tc = int(sys.stdin.readline())
 
 for _ in range(tc):
-    command = input().split()
+    command = sys.stdin.readline().split()
     op = command[0]
     # print(command)
 
@@ -16,7 +16,7 @@ for _ in range(tc):
     elif op == "remove":
         set_temp.discard(command[1])
     elif op == "check":
-        if set_temp.issuperset(set([command[1]])) == True:
+        if command[1] in set_temp:
             result.append("1")
         else:
             result.append("0")
@@ -27,7 +27,7 @@ for _ in range(tc):
             set_temp.add(command[1])
 
     elif op == "all":
-        set_temp = set([str(num) for num in range(1, 21)])
+        set_temp = {'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'}
     elif op == "empty":
         set_temp.clear()
 
