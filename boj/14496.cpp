@@ -19,10 +19,10 @@ vector<int> BFS(const Graph &G, int start, int end) {
 
     bool isDst = false;
 
-    for (auto next : G[v]) {       // v위치에서 갈 수 있는 곳 목록
-      if (dist[next] == -1) {      // 첫 방문이면
-        dist[next] = dist[v] + 1;  // 거리 기록하기
-      }
+    for (auto next : G[v]) {           // v위치에서 갈 수 있는 곳 목록
+      if (dist[next] != -1) continue;  // 방문한 곳이면 스킵
+      // 첫 방문하는 곳이면
+      dist[next] = dist[v] + 1;        // 거리 기록하기
 
       if (next == end) {
         isDst = true;  // 목적지까지 거리를 기록했으면 끝내도 되잖아.
