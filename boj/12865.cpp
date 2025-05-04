@@ -16,35 +16,33 @@ int main() {
     item[i].second = V;  // 가치
   }
 
-  for (int i = 0; i < N; ++i) {  // 아이템 고르기
-    for (int w = 0; w <= K; ++w) {
-      int crt_weight = item[i].first;
-      int crt_val = item[i].second;
+  for (int i = 1; i <= N; ++i) {  // 아이템 고르기
+    for (int w = 1; w <= K; ++w) {
+      int crt_weight = item[i - 1].first;
+      int crt_val = item[i - 1].second;
+
+      // 일단 윗 갚을 가져온다.
+      dp[i][w] = max(dp[i][w], dp[i - 1][w]);
 
       // 다른 것을 빼서 나를 담을 방법이 있다면
       if (w >= crt_weight) {
-        dp[i][w] = dp[i][w - crt_weight] + crt_val;
-      }
-
-      // 위에서 가져올 수 있다면
-      if (i > 0) {
-        dp[i][w] = max(dp[i][w], dp[i - 1][w]);
+        dp[i][w] = max(dp[i][w], dp[i - 1][w - crt_weight] + crt_val);
       }
 
       // 아무것도 할 수 없으면 전역 초기화된 0으로 저장됨
     }
   }
 
-  cout << endl;
-  for (int i = 0; i < N; ++i) {  // 아이템 고르기
-    for (int w = 0; w <= K; ++w) {
-      printf("%3d", dp[i][w]);
-    }
-    cout << endl;
-  }
-  cout << endl;
+  // cout << endl;
+  // for (int i = 0; i <= N; ++i) {  // 아이템 고르기
+  //   for (int w = 0; w <= K; ++w) {
+  //     printf("%4d", dp[i][w]);
+  //   }
+  //   cout << endl;
+  // }
+  // cout << endl;
 
-  printf("%d\n", dp[N - 1][K]);
+  printf("%d\n", dp[N][K]);
   return 0;
 }
 /*
