@@ -14,29 +14,28 @@ int main() {
     }
   }
 
-  for (int i = 0; i <= N; i++) {
-    for (int j = 0; j <= N; j++) {
-      printf("%lld ", dp[i][j]);
-    }
-    printf("\n");
-  }
-  printf("\n");
+//   for (int i = 0; i <= N; i++) {
+//     for (int j = 0; j <= N; j++) {
+//       printf("%lld ", dp[i][j]);
+//     }
+//     printf("\n");
+//   }
+//   printf("\n");
 
   for (int i = 0; i < M; ++i) {
-    int p1[2], p2[2];  // {x, y}
+    int p1[2], p2[2];  // {x, y} <= 전통적인 가로축 x가 아니라 x행 y열이라고 한다...
 
-    scanf("%d %d %d %d", &p1[0], &p1[1], &p2[0], &p2[1]); // 1 2 1 2 
+    scanf("%d %d %d %d", &p1[0], &p1[1], &p2[0], &p2[1]);
     long long area_topleft, area_top, area_left, area_me;
-    area_topleft = dp[p1[1] - 1][p1[0] - 1]; // 1 0
-    area_top = dp[p1[1] - 1][p2[0]];    
-    area_left = dp[p2[1]][p1[0] - 1];
-    area_me = dp[p2[1]][p2[0]];
-    printf("%lld %lld\n", area_topleft, area_top);
-    printf("%lld %lld\n", area_left, area_me);
+    area_topleft = dp[p1[0] - 1][p1[1] - 1];
+    area_top = dp[p2[0]][p1[1] - 1];
+    area_left = dp[p1[0] - 1][p2[1]];
+    area_me = dp[p2[0]][p2[1]];
+    // printf("%lld %lld\n", area_topleft, area_top);
+    // printf("%lld %lld\n", area_left, area_me);
 
     long long result = area_me - area_top - area_left + area_topleft;
     printf("%lld\n", result);
-    printf("\n");
   }
 
   return 0;
