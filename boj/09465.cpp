@@ -10,7 +10,8 @@ int DFS(int r, int c, int mem[][100001]) {
     return 0;
   }
 
-  if (mem[r][c] == 0) {  // 계산 x => 탐색
+  // ⚠️절대!!! dp에 들어올 수 있는 값으로 예외처리를 하지 마!!
+  if (mem[r][c] == -1) {  // 계산 x => 탐색
     mem[r][c] = max(DFS(r ? 0 : 1, c - 1, mem), DFS(r ? 0 : 1, c - 2, mem)) +
                 board[r][c];
 
@@ -38,6 +39,7 @@ int main() {
     for (int i = 0; i < 2; i++) {
       for (int j = 0; j < n; j++) {
         scanf("%d", &board[i][j]);
+        mem[i][j] = -1;
       }
     }
     mem[0][0] = board[0][0];
