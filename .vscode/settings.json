@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.h": "cpp",
         "iostream": "cpp",
         "vector": "cpp",
         "__bit_reference": "cpp",
@@ -47,6 +48,8 @@
         "unordered_map": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "charconv": "cpp",
+        "forward_list": "cpp"
     }
 }
