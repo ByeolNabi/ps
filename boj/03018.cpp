@@ -23,7 +23,7 @@ int main() {
         info[number_list[j]] = info[number_list[j]] | 1LL << i;
       }
     } else {
-      int attendance = 0;
+      unsigned long long int attendance = 0;
       for (int j = 0; j < p; j++) {
         attendance = attendance | info[number_list[j]];
       }
